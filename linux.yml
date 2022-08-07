@@ -1,0 +1,16 @@
+- hosts: localhost 
+  vars_files:
+    - vars.yml
+  tasks:
+    - import_tasks: tasks/ssh.yml
+      when: setup_ssh
+    - import_tasks: tasks/git-setup.yml
+      when: basic_setup
+    - import_tasks: tasks/dotfiles.yml
+      when: basic_setup
+    - import_tasks: tasks/basic.yml
+      when: basic_setup
+    - import_tasks: tasks/neovim.yml
+      when: basic_setup
+    - import_tasks: tasks/go.yml
+      when: basic_setup

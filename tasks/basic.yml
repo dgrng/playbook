@@ -1,0 +1,13 @@
+- name: Install Basic essentials
+  become: yes
+  package:
+    name: ["zsh","neovim", "exa", "bat", "ripgrep", "alacritty"]
+    state: present
+  tags: ["install", "basic"]
+
+- name: install c dev tools
+  become: yes
+  package:
+    name: ["@C Development Tools and Libraries" ]
+    state: present
+  tags: ["install", "basic"]

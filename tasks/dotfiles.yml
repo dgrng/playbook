@@ -1,0 +1,30 @@
+- name: clone dotfiles
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ lookup('env', 'HOME')}}/.dotfiles"
+    recursive: yes
+    update: yes
+    accept_hostkey: yes
+    version: main
+  tags: ["dotfiles", "install"]
+
+- name: create symlinks
+  shell: "{{ lookup('env', 'HOME') }}/.dotfiles/setup.sh"
+  args:
+    chdir: "{{ lookup('env', 'HOME') }}/.dotfiles"
+  tags: ["dotfiles", "install"]
+
+- name: font symlinks
+  file:
+    src: "{{ lookup('env', 'HOME')}}/.dotfiles/fonts"
+    dest: /usr/share/fonts/customs
+    state: link
+  become: yes
+  tags: ["dotfiles", "install"]
+
+- name: change shell to zsh
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    shell: /usr/bin/zsh
+  become: yes
+  tags: ["dotfiles", "install"]

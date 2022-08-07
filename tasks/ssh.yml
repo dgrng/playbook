@@ -1,0 +1,30 @@
+- name: ensure ssh directory exists
+  file:
+    dest: "{{ ssh_file | dirname }}" 
+    mode: 0700
+    state: directory
+  tags: ["ssh"]
+
+- name: get passphrase for ssh
+  pause:
+    prompt: enter ssh passphrase
+    echo: no
+  register: result
+  tags: ["ssh"]
+
+- name: generate ssh
+  openssh_keypair:
+    path: "{{ ssh_file }}"
+    type: ed25519
+    passphrase: "{{ result.user_input }}"
+    comment: "{{ email }}"
+  tags: ["ssh"]
+
+- name: register ssh key
+  authorized_key:
+    user: "{{ lookup('env', 'USER') }}"
+    state: present
+    key: "{{ lookup('file', ssh_pub_file) }}"
+    comment: "{{ email }}"
+  tags: ["ssh"]
+  register: authorizedkey

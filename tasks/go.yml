@@ -1,0 +1,14 @@
+- name: Install go
+  become: yes
+  package:
+    name: "go"
+    state: present
+  tags: ["install", "go"]
+
+- name: Install go tools
+  shell: |
+    go install golang.org/x/tools/gopls@latest
+
+    go install github.com/go-delve/delve/cmd/dlv@latest
+    exit 0
+  tags: ["install", "go"]
