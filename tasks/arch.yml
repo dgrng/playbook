@@ -17,5 +17,7 @@
       - "pavucontrol"
       - "pcmanfm"
       - "xorg-xkill"
+      - "arc-gtk-theme"
+      - "lxappearance"
   tags: ["install", "basic"]
 
