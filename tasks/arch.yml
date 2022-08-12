@@ -1,0 +1,21 @@
+- name: install c dev tools
+  become: yes
+  package:
+    name: ["base-devel" ]
+    state: present
+  tags: ["install", "basic"]
+
+- name : install arch specific tools
+  become: yes
+  package:
+    state: present
+    name: 
+      - "nitrogen"
+      - "picom"
+      - "ttf-hanazono"
+      - "volumeicon"
+      - "pavucontrol"
+      - "pcmanfm"
+      - "xorg-xkill"
+  tags: ["install", "basic"]
+

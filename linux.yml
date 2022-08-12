@@ -10,6 +10,8 @@
       when: basic_setup
     - import_tasks: tasks/basic.yml
       when: basic_setup
+    - import_tasks: tasks/arch.yml
+      when: basic_setup
     - import_tasks: tasks/neovim.yml
       when: basic_setup
     - import_tasks: tasks/go.yml

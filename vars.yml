@@ -1,6 +1,6 @@
-setup_ssh: true 
+setup_ssh: false 
 basic_setup: true 
 dotfiles_repo: "git@github.com:dgrng/.dotfiles.git"
-email: "maandiptammu@gmail.com"
+email: "8016611+dgrng@users.noreply.github.com"
 ssh_file: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
 ssh_pub_file: "{{ssh_file}}.pub"
