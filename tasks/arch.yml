@@ -19,5 +19,13 @@
       - "xorg-xkill"
       - "arc-gtk-theme"
       - "lxappearance"
+      - "archlinux-wallpaper"
   tags: ["install", "basic"]
 
+- name : install tools for aur
+  become: yes
+  yay:
+    state: present
+    name: 
+      - "pamac-aur"
+  tags: ["install", "basic"]
