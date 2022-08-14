@@ -20,6 +20,7 @@
       - "arc-gtk-theme"
       - "lxappearance"
       - "archlinux-wallpaper"
+      - "polkit"
   tags: ["install", "basic"]
 
 - name : install tools for aur

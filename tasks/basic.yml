@@ -5,3 +5,13 @@
     state: present
   tags: ["install", "basic"]
 
+- name: Install Basic dev tools
+  become: yes
+  package:
+    name: ["nodejs", "npm"]
+    state: present
+  tags: ["install", "basic"]
+
+- name: Set npm global install dir
+  shell: npm config set prefix '~/.config/npm'
+  tags: ["install", "basic"]
